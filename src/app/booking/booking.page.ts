@@ -14,13 +14,11 @@ export class BookingPage implements OnInit {
   constructor(private bookingService: BookingService) { }
 
   ngOnInit() {
+    console.log("booking page");
     this.loadedBookings = this.bookingService.bookings;
-    console.log("qwertyui", this.loadedBookings);
   }
-
   onCancelBooking(offerId: string, slideEl: IonItemSliding) {
     slideEl.close();
   }
-  
 
 }
