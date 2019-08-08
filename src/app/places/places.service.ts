@@ -42,11 +42,11 @@ export class PlacesService {
       'abc'
     )
   ]);
-
-  constructor(private authService: AuthService) {
-  }
   get places() {
     return this._places.asObservable();
+  }
+
+  constructor(private authService: AuthService) {
   }
   getPlace(id: string) {
     return this.places.pipe(
@@ -81,33 +81,6 @@ export class PlacesService {
       })
     );
   }
-  // onUpdatePlaces(placeId: string, title: string, description: string) {
-  //   console.log(placeId, ' ', title);
-  //   return this.places.pipe(
-  //     take(1),
-  //     delay(2000),
-  //     tap(places => {
-  //       const updatedPlaceIndex = places.findIndex(pl =>
-  //         pl.id === placeId
-  //       );
-  //       const updatedPlaces = [...places];
-  //       const oldPlace = updatedPlaces[updatedPlaceIndex];
-  //       console.log(oldPlace);
-  //       updatedPlaces[updatedPlaceIndex] = new Place(
-  //         oldPlace.id,
-  //         title,
-  //         description,
-  //         oldPlace.imgUrl,
-  //         oldPlace.price,
-  //         oldPlace.availableFrom,
-  //         oldPlace.availableTo,
-  //         oldPlace.userId
-  //       );
-  //       console.log(updatedPlaces[updatedPlaceIndex]);
-  //       this._places.next(updatedPlaces);
-  //     })
-  //   );
-  // }
   onUpdatePlaces(placeId: string, title: string, description: string) {
     console.log(placeId, title, description);
     return this.places.pipe(

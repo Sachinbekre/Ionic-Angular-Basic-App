@@ -1,0 +1,132 @@
+<ion-header>
+  <ion-toolbar color="primary" text-center>
+    <ion-title>Swipe Tabs Example</ion-title>
+  </ion-toolbar>
+  <ion-segment color="" [(ngModel)]="page">
+    <ion-segment-button value="0" (click)="selectedTab(0)"
+      >Profile</ion-segment-button
+    >
+    <ion-segment-button value="1" (click)="selectedTab(1)"
+      >Gallary</ion-segment-button
+    >
+    <ion-segment-button value="2" (click)="selectedTab(2)"
+      >Contacts</ion-segment-button
+    >
+  </ion-segment>
+</ion-header>
+
+<ion-content class="ion-no-padding">
+  <ion-slides #slider (ionSlideWillChange)="moveButton()">
+    <ion-slide>
+      <ion-card style="width: 100%" class="ion-no-margin">
+        <div>
+          <img src="assets/images/san.jpg" />
+        </div>
+        <div>
+          <!-- <ion-avatar style="margin-left: auto;margin-right: auto"> -->
+          <img src="assets/images/sachin.jpg" class="avatarImg" />
+          <!-- </ion-avatar> -->
+        </div>
+        <ion-card-content>
+          <ion-card-title>Sachin Suresh</ion-card-title>
+        </ion-card-content>
+        <ion-row>
+          <ion-col size="4">
+            <ion-button color="light">
+              <ion-icon slot="icon-only" name="people"></ion-icon>
+            </ion-button>
+            <p>Friends</p>
+          </ion-col>
+          <ion-col size="4">
+            <ion-button color="light">
+              <ion-icon slot="icon-only" name="eye"></ion-icon>
+            </ion-button>
+            <p>View as</p>
+          </ion-col>
+          <ion-col size="4">
+            <ion-button color="light">
+              <ion-icon slot="icon-only" name="list"></ion-icon>
+            </ion-button>
+            <p>More</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+              <ion-item lines="none">
+                  <ion-icon name="briefcase" slot="start">
+                  </ion-icon>
+                  <ion-text>
+                    Software Developer at Provlabs
+                  </ion-text>
+                </ion-item>
+          </ion-col>
+          <ion-col size="12">
+              <ion-item lines="none">
+                  <ion-icon name="school" slot="start">
+                  </ion-icon>
+                  <ion-text>
+                      Studied at Government Engineering College Ramanagaram
+                  </ion-text>
+                </ion-item>
+          </ion-col>
+          <ion-col size="12">
+              <ion-item lines="none">
+                  <ion-icon name="home" slot="start">
+                  </ion-icon>
+                  <ion-text>
+                      Lives in Bengaluru
+                  </ion-text>
+                </ion-item>
+          </ion-col>
+          <ion-col size="12">
+              <ion-item lines="none">
+                  <ion-icon name="pin" slot="start">
+                  </ion-icon>
+                  <ion-text>
+                      From Mysore,India
+                  </ion-text>
+                </ion-item>
+          </ion-col>
+          <ion-col size="12">
+              <ion-item lines="none">
+                  <ion-icon name="heart" slot="start">
+                  </ion-icon>
+                  <ion-text>
+                      Single
+                  </ion-text>
+                </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ion-slide>
+    <ion-slide>
+        <!-- <div *ngFor="let image of images">
+            <img [src]="image.img"/>
+        </div> -->
+        <ion-row>
+            <ion-item *ngFor="let item of images" lines="none">
+              <ion-thumbnail slot="start">
+                <ion-img [src]="item.img"></ion-img>
+              </ion-thumbnail>
+            </ion-item>
+          </ion-row>
+    </ion-slide>
+    <ion-slide>
+      <ion-list style="width: 100%;">
+        <ion-reorder-group
+          (ionItemReorder)="doReorder($event)"
+          disabled="false"
+        >
+          <ion-item *ngFor="let contact1 of contacts">
+            <ion-icon name="contact" slot="end"> </ion-icon>
+            <ion-label>
+              <h2>{{ contact1.name }}</h2>
+              <p>{{ contact1.phoneNumber }}</p>
+            </ion-label>
+            <ion-reorder></ion-reorder>
+          </ion-item>
+        </ion-reorder-group>
+      </ion-list>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

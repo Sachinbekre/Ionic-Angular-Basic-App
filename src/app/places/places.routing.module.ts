@@ -41,6 +41,19 @@ const routes: Routes = [
              ]
         },
         {
+            path:'swipetabs',
+            children:[
+                {
+                    path:'',
+                    loadChildren: './swipetabs/swipetabs.module#SwipetabsPageModule'
+                },
+                {
+                    path:'tabOne',
+                    loadChildren: './swipetabs/tab-one/tab-one.module#TabOnePageModule'
+                }
+            ]
+        },
+        {
             path: '',
             redirectTo: '/places/tabs/discover',
             pathMatch: 'full'
